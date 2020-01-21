@@ -5,9 +5,9 @@
   "homepage": "https://github.com/acbart/educational-phaser-game-template#readme",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack/webpack.dev.js",
-    "build": "webpack --config webpack/webpack.prod.js",
-    "deploy-gh": "webpack --config webpack/webpack.ghpages.js && gh-pages -d dist"
+    "start": "webpack-dev-server --config config/webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js",
+    "deploy-gh": "webpack --config config/webpack.ghpages.js && gh-pages -d dist"
   },
   "keywords": [
     "Phaser",
