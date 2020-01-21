@@ -11,11 +11,11 @@ These files are critical for documenting your game:
  
 * [egdd.md](egdd.md): The educational game design document describing this game in more depth.
 
-These files are critical for configuring the metadata of your game:
+These files are critical for configuring the metadata of your game and should be updated:
 
-* [config/webpack.common.js](config/webpack.common.js): Change the title of your game near the TODO.
-* [package.json](package.json): Some configuration settings that you should adjust for your game.
-* [config/pwa/manifest.json](pwa/manifest.json): Some configuration settings for bundling your game as a Progressive Web App.
+* [package.json](package.json): Some configuration settings that you should adjust for your game: `name`, `description`, `homepage`, `author`, `keywords`, `repository`.
+* [config/webpack.common.js](config/webpack.common.js): Change the `myGameName` for your game near the TODO.
+* [config/pwa/manifest.json](pwa/manifest.json): Some configuration settings for bundling your game as a Progressive Web App, particularly should change `short_name` and `name`.
 
 You should create the following files:
 
