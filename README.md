@@ -1,4 +1,5 @@
 # educational-phaser-game-template
+
 Template for designing educational Phaser Games
 
 # Important Files
@@ -15,7 +16,6 @@ These files are critical for configuring the metadata of your game and should be
 
 * [package.json](package.json): Some configuration settings that you should adjust for your game: `name`, `description`, `homepage`, `author`, `keywords`, `repository`.
 * [config/webpack.common.js](config/webpack.common.js): Change the `myGameName` for your game near the TODO.
-* [config/webpack.ghpages.js](config/webpack.ghpages.js): Change the `publicPath` for your game's github repo name.
 * [config/pwa/manifest.json](pwa/manifest.json): Some configuration settings for bundling your game as a Progressive Web App, particularly should change `short_name` and `name`.
 
 You should create the following files:
