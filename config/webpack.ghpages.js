@@ -4,7 +4,8 @@ const prod = require('./webpack.prod');
 
 ghpages = {
   output: {
-    publicPath: '/phaser-test-game/'
+    path: path.resolve(__dirname, `../dist/${endpoint}`),
+    publicPath: `/phaser-test-game/${endpoint}`
   }
 };
 
