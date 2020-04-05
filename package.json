@@ -1,9 +1,14 @@
 {
   "name": "educational-phaser-game-template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Phaser 3 starter template for educational games, using TypeScript, webpack, and Github Pages.",
   "homepage": "https://github.com/acbart/educational-phaser-game-template#readme",
   "main": "index.js",
+  "game": {
+    "url": "educational-phaser-game-template",
+    "shortName": "EdGame",
+    "name": "Educational Phaser Game Template"
+  },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
