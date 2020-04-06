@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e7087d5d91321d575b038366ef9f2407",
+    "revision": "deec73c79c02e771f5fe18be9c63cf89",
     "url": "/educational-phaser-game-template/devassets/citations.md"
   },
   {
@@ -28,15 +28,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/educational-phaser-game-template/devfavicon.ico"
   },
   {
-    "revision": "6b09fc2a9525605f23a8",
-    "url": "/educational-phaser-game-template/devgen.main.302d9618034aecade993.bundle.js"
+    "revision": "dbdd9077ae88bb1e2297",
+    "url": "/educational-phaser-game-template/devgen.main.f48d437125ed283f6462.bundle.js"
   },
   {
-    "revision": "201b65bee9df6270f739",
-    "url": "/educational-phaser-game-template/devgen.vendors.a047ee0740c7d21714d9.bundle.js"
+    "revision": "5e69403aa42e950fedff",
+    "url": "/educational-phaser-game-template/devgen.vendors.0805bb80903235d40eaf.bundle.js"
   },
   {
-    "revision": "5be0755c22b1572f34e51c7e9067ab22",
+    "revision": "8715a82bbefef9b67ef191025a70c983",
     "url": "/educational-phaser-game-template/devindex.html"
   },
   {
