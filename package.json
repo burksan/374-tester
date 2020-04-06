@@ -9,6 +9,14 @@
     "shortName": "EdGame",
     "name": "Educational Phaser Game Template"
   },
+  "author": {
+    "name": "Austin Cory Bart",
+    "url": "https://github.com/acbart"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acbart/educational-phaser-game-template.git"
+  },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
@@ -30,14 +38,6 @@
     "Github Pages",
     "starter"
   ],
-  "author": {
-    "name": "Austin Cory Bart",
-    "url": "https://github.com/acbart"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/acbart/educational-phaser-game-template.git"
-  },
   "template": {
     "name": "educational-phaser-game-template",
     "url": "https://github.com/acbart/educational-phaser-game-template",

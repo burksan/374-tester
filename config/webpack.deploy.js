@@ -6,7 +6,7 @@ const JavaScriptObfuscator = require('webpack-obfuscator');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const package = require('../package.json');
 
-const RECOMMENDED_MAXIMUM_FILE_SIZE = 5 * 1024 * 1024; // 5mb
+const RECOMMENDED_MAXIMUM_FILE_SIZE = 50 * 1024 * 1024; // 5mb
 const EGDD_FILE = "egdd.md";
 
 function copyResolver() {
@@ -30,7 +30,7 @@ module.exports = (env) => {
 
     // Copy EGDD to appropriate endpoint
     fs.copyFileSync(path.resolve(__dirname, '..', EGDD_FILE),
-        path.resolve(__dirname, '..', endpoint, EGDD_FILE),
+        path.resolve(__dirname, '..', 'dist', endpoint, EGDD_FILE),
         copyResolver("Copied", EGDD_FILE));
 
     // Update the index file for the dist directory
@@ -39,7 +39,7 @@ module.exports = (env) => {
         copyResolver('index.html was copied to index.html'));
 
     // Update Manifest file
-    manifestFile = path.resolve(__dirname, 'config', 'manifest.json');
+    manifestFile = path.resolve(__dirname, 'pwa', 'manifest.json');
     const manifest = require(manifestFile);
     manifest.short_name = package.game.shortName;
     manifest.name = package.game.name;
