@@ -14,6 +14,13 @@ export default class MainScene extends Phaser.Scene {
   
     this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato");
     
+
+    this.anims.create({
+      key: "thrust",
+      frames: this.anims.generateFrameNumbers("player"),
+      frameRate: 20,
+      repeat: -1
+    });
   }
 
   update() {
