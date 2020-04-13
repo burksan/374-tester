@@ -16,6 +16,7 @@ import tea from '../objects/tea';
 import coffee from '../objects/coffee';
 import lemonade from '../objects/lemonade';
 import water from '../objects/water';
+import player from '../objects/player';
 
 export default class MainScene extends Phaser.Scene {
   private deliveryscene;
@@ -37,6 +38,8 @@ export default class MainScene extends Phaser.Scene {
   private coffee: coffee;
   private lemonade: lemonade;
   private water: water;
+  private player;
+  cursorKeys;
 
   constructor() {
     super({ key: 'MainScene' });
@@ -72,17 +75,50 @@ export default class MainScene extends Phaser.Scene {
     //this.water = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "water");
 
     //Other Food Related Items
-    this.cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese");
+    //this.cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese");
 
+
+    this.player = this.physics.add.sprite(this.scale.width / 2-8, this.scale.height - 64, "player");
+    this.player.setScale(10);
+    this.player.play("thrust");
+    this.cursorKeys = this.input.keyboard.createCursorKeys();
+    this.player.setCollideWorldBounds(true);
 
     this.anims.create({
       key: "thrust",
-      frames: this.anims.generateFrameNumbers("player"),
+      frames: this.anims.generateFrameNumbers("player", {start: 0, end: 1}),
       frameRate: 20,
       repeat: -1
     });
   }
 
   update() {
+    this.movePlayerManager();
   }
+
+  movePlayerManager(){
+    
+
+    //NOTE NOTE NOTE NOTE NOTE NOTE NOTE
+    //PLAYER IS STILL MOVING DOWNWARD AND WE GOTTA FIX THIS
+
+    
+    if(this.cursorKeys.left.isDown){
+      this.player.setVelocityX(-300);
+    }
+    else if(this.cursorKeys.right.isDown){
+      this.player.setVelocityX(300);
+    }
+    else this.player.setVelocityX(0);
+
+    if(this.cursorKeys.up.isDown){
+      this.player.setVelocityY(-300);
+    }
+    else if(this.cursorKeys.down.isDown){
+      this.player.setVelocityY(300);
+    }
+    else this.player.setVelocityY(0);
+  }
+
+
 }
