@@ -1,5 +1,5 @@
 import 'phaser';
-import MainScene from './scenes/mainScene';
+import MainScene from './scenes/deliveryScene';
 import PreloadScene from './scenes/preloadScene';
 import GameConfig = Phaser.Types.Core.GameConfig;
 
