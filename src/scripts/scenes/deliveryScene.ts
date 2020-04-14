@@ -19,7 +19,7 @@ import water from '../objects/water';
 import player from '../objects/player';
 
 export default class DeliveryScene extends Phaser.Scene {
-  private Dscene;
+  private deliveryscene;
   private tomato: tomato;
   private carrot: carrot;
   private lettuce: lettuce;
@@ -46,8 +46,8 @@ export default class DeliveryScene extends Phaser.Scene {
   }
 
   create() {
-    this.Dscene = this.add.image(0,0, "Dscene");
-    this.Dscene.setOrigin(0,0);
+    this.deliveryscene = this.add.image(0,0, "deliveryscene");
+    this.deliveryscene.setOrigin(0,0);
   
     //Vegetables
     this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato");
