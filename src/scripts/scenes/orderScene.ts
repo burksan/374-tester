@@ -18,7 +18,7 @@ import lemonade from '../objects/lemonade';
 import water from '../objects/water';
 import player from '../objects/player';
 
-export default class MainScene extends Phaser.Scene {
+export default class OrderScene extends Phaser.Scene {
   private deliveryscene;
   private tomato: tomato;
   private carrot: carrot;
@@ -42,12 +42,12 @@ export default class MainScene extends Phaser.Scene {
   cursorKeys;
 
   constructor() {
-    super({ key: 'MainScene' });
+    super({ key: 'OrderScene' });
   }
 
   create() {
-    this.deliveryscene = this.add.image(0,0, "deliveryscene");
-    this.deliveryscene.setOrigin(0,0);
+    //this.deliveryscene = this.add.image(0,0, "deliveryscene");
+    //this.deliveryscene.setOrigin(0,0);
   
     //Vegetables
     this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato");
