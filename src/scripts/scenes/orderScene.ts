@@ -50,32 +50,69 @@ export default class OrderScene extends Phaser.Scene {
     //this.deliveryscene.setOrigin(0,0);
   
     //Vegetables
-    this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato");
-    this.carrot = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "carrot");
-    this.lettuce = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lettuce");
-    
+    let tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    this.input.setDraggable(tomato);
+    let carrot = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "carrot").setInteractive();
+    this.input.setDraggable(carrot);
+    let lettuce = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lettuce").setInteractive();
+    this.input.setDraggable(lettuce);
+
+
     //Fruits
-    this.apple = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "apple");
-    this.banana = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "banana");
-    this.orange = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "orange");
-    this.pineapple = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "pineapple");
-    this.strawberry = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "strawberry");
-    this.watermelon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "watermelon");
+    let apple = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "apple").setInteractive();
+    this.input.setDraggable(apple);
+    let banana = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "banana").setInteractive();
+    this.input.setDraggable(banana);
+    let orange = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "orange").setInteractive();
+    this.input.setDraggable(orange);
+    let pineapple = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "pineapple").setInteractive();
+    this.input.setDraggable(pineapple);
+    let strawberry = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "strawberry").setInteractive();
+    this.input.setDraggable(strawberry);
+    let watermelon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "watermelon").setInteractive();
+    this.input.setDraggable(watermelon);
 
     //Meats
-    this.chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken");
-    this.bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon");
-    this.ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham");
+    let chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken").setInteractive();
+    this.input.setDraggable(chicken);
+    let bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon").setInteractive();
+    this.input.setDraggable(bacon);
+    let ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham").setInteractive();
+    this.input.setDraggable(ham);
 
     //Drinks
-    this.soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda");
-    this.coffee = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "coffee");
-    this.tea = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tea");
-    this.lemonade = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lemonade");
-    this.water = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "water");
+    let soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda").setInteractive();
+    this.input.setDraggable(soda);
+    let coffee = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "coffee").setInteractive();
+    this.input.setDraggable(coffee);
+    let tea = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tea").setInteractive();
+    this.input.setDraggable(tea);
+    let lemonade = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lemonade").setInteractive();
+    this.input.setDraggable(lemonade);
+    let water = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "water").setInteractive();
+    this.input.setDraggable(water);
 
     //Other Food Related Items
-    this.cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese");
+    let cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese").setInteractive();
+    this.input.setDraggable(cheese);
+
+    this.input.dragDistanceThreshold = 16;
+    
+    this.input.on('dragstart', function (pointer, gameObject) {
+      //change this color later
+      gameObject.setTint(0xff0000);
+  });
+  
+  this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+    gameObject.x = dragX;
+    gameObject.y = dragY;
+  });
+
+  this.input.on('dragend', function (pointer, gameObject) {
+    gameObject.clearTint();
+  });
+
+    
 
     //Player
     this.player = this.physics.add.sprite(this.scale.width / 2-8, this.scale.height - 64, "player");
@@ -83,6 +120,8 @@ export default class OrderScene extends Phaser.Scene {
     //this.player.play("thrust");
     //this.cursorKeys = this.input.keyboard.createCursorKeys();
     this.player.setCollideWorldBounds(true);
+
+
 
     /*this.anims.create({
       key: "thrust",

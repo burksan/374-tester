@@ -40,6 +40,8 @@ export default class PreloadScene extends Phaser.Scene {
 
   }
 
+  //this is a scene transition. make this into an if else statement in the orderScene
+  //
   create() {
     this.scene.start('DeliveryScene');
   }

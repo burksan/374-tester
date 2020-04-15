@@ -17,6 +17,7 @@ import coffee from '../objects/coffee';
 import lemonade from '../objects/lemonade';
 import water from '../objects/water';
 import player from '../objects/player';
+import { GameObjects } from 'phaser';
 
 export default class DeliveryScene extends Phaser.Scene {
   private deliveryscene;
@@ -50,7 +51,26 @@ export default class DeliveryScene extends Phaser.Scene {
     this.deliveryscene.setOrigin(0,0);
   
     //Vegetables
-    this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato");
+    let tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    this.input.setDraggable(tomato);
+
+    this.input.dragDistanceThreshold = 16;
+    
+    this.input.on('dragstart', function (pointer, gameObject) {
+      //change this color later
+      gameObject.setTint(0xff0000);
+  });
+  
+  this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+    gameObject.x = dragX;
+    gameObject.y = dragY;
+  });
+
+  this.input.on('dragend', function (pointer, gameObject) {
+    gameObject.clearTint();
+  });
+
+    //this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato");
     //this.carrot = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "carrot");
     //this.lettuce = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lettuce");
     
