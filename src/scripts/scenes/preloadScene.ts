@@ -16,7 +16,7 @@ export default class PreloadScene extends Phaser.Scene {
     //Fruit
     this.load.image("apple", "assets/images/apple.png");
     this.load.image("banana", "assets/images/banana.png");
-    this.load.image("orange", "assets/images/orange.png");
+    this.load.image("orange", "assets/images/orange1.png");
     this.load.image("pineapple", "assets/images/pineapple.png");
     this.load.image("strawberry", "assets/images/strawberry.png");
     this.load.image("watermelon", "assets/images/watermelon.png");

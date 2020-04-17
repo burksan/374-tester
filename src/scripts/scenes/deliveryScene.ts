@@ -52,6 +52,7 @@ export default class DeliveryScene extends Phaser.Scene {
   
     //Vegetables
     let tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    //this.tomato.setScale(1);
     this.input.setDraggable(tomato);
 
     this.input.dragDistanceThreshold = 16;
@@ -96,6 +97,44 @@ export default class DeliveryScene extends Phaser.Scene {
 
     //Other Food Related Items
     //this.cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese");
+
+
+   // let arr = [];
+    //let soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda");
+    //arr.push(soda); // that doesnt work
+
+    let foodarr = [["chicken", "pollo", "poulet"], ["bacon", "tocino", "bacon"], ["ham", "jamon", "jambon"]];
+    let randFood = foodarr[Math.floor(Math.random() * 3)];
+
+    // trying to group the images
+    let group = this.physics.add.group();
+    for(let i = 0; i < 3; i++){
+      let chicken = this.physics.add.sprite(this.scale.width / 2, this.scale.height / 2, "chicken");
+      let bacon = this.physics.add.sprite(this.scale.width / 2 - 500, this.scale.height / 2, "bacon");
+      let ham = this.physics.add.sprite(this.scale.width / 2 - 800, this.scale.height / 2, "ham");   
+      group.add(chicken);
+      group.add(bacon);
+      group.add(ham);
+      chicken.setCollideWorldBounds(true);
+      bacon.setCollideWorldBounds(true);
+      ham.setCollideWorldBounds(true);
+    }
+    /* Phaser.Actions.Call(group.getChildren(), function(go) {
+      go.setVelocityX(100)
+    }); */
+
+    // group.getChildren() returns an array
+    let randomSprite = Phaser.Utils.Array.GetRandom(group.getChildren());
+    
+
+    let pictures = {'chicken': 'chicken.png', 'bacon': 'bacon.png', 'ham': 'ham.jpeg'}
+    let filename = pictures['chicken'];
+    /*with open(filename. 'rb') as f:
+      image = f.read()*/
+    for (var key in pictures){
+      var value = pictures[key];
+      //do something with value
+    }
 
 
     this.player = this.physics.add.sprite(this.scale.width / 2-8, this.scale.height - 64, "player");

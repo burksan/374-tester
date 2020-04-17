@@ -51,6 +51,7 @@ export default class OrderScene extends Phaser.Scene {
   
     //Vegetables
     let tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    //this.tomato.setScale(0.5);
     this.input.setDraggable(tomato);
     let carrot = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "carrot").setInteractive();
     this.input.setDraggable(carrot);
