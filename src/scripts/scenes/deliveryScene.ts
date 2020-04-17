@@ -155,6 +155,11 @@ export default class DeliveryScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1
     });
+
+    this.physics.add.collider(this.bag, this.tomato, function(bag, tomato){
+      tomato.destroy();
+    });
+
   }
 
   update() {
