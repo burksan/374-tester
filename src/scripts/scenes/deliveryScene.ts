@@ -160,6 +160,12 @@ export default class DeliveryScene extends Phaser.Scene {
       tomato.destroy();
     });
 
+    this.physics.add.overlap(this.bag, this.tomato, this.deleteFood, null, this);
+
+  }
+
+  deleteFood(bag, tomato){
+    bag.disableBody(true, true);
   }
 
   update() {
