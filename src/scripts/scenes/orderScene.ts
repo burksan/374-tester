@@ -16,10 +16,11 @@ import tea from '../objects/tea';
 import coffee from '../objects/coffee';
 import lemonade from '../objects/lemonade';
 import water from '../objects/water';
+import bag from '../objects/bag';
 import player from '../objects/player';
 
 export default class OrderScene extends Phaser.Scene {
-  private deliveryscene;
+  private orderscene;
   private tomato: tomato;
   private carrot: carrot;
   private lettuce: lettuce;
@@ -38,6 +39,7 @@ export default class OrderScene extends Phaser.Scene {
   private coffee: coffee;
   private lemonade: lemonade;
   private water: water;
+  private bag: bag;
   private player;
   cursorKeys;
 
@@ -46,7 +48,7 @@ export default class OrderScene extends Phaser.Scene {
   }
 
   create() {
-    //this.deliveryscene = this.add.image(0,0, "deliveryscene");
+    this.orderscene = this.add.image(0,0, "orderscene");
     //this.deliveryscene.setOrigin(0,0);
   
     //Vegetables
@@ -113,6 +115,8 @@ export default class OrderScene extends Phaser.Scene {
     gameObject.clearTint();
   });
 
+    //Non-Food Related Items
+    let bag = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bag").setInteractive();
     
 
     //Player
