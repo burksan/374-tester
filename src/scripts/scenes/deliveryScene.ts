@@ -1,4 +1,4 @@
-import tomato from '../objects/tomato';
+/* import tomato from '../objects/tomato';
 import carrot from '../objects/carrot';
 import lettuce from '../objects/lettuce';
 import apple from '../objects/apple';
@@ -15,34 +15,37 @@ import soda from '../objects/soda';
 import tea from '../objects/tea';
 import coffee from '../objects/coffee';
 import lemonade from '../objects/lemonade';
-import water from '../objects/water';
+import water from '../objects/water'; */
+import food from '../objects/food';
 import bag from '../objects/bag';
 import player from '../objects/player';
 import { GameObjects } from 'phaser';
 
 export default class DeliveryScene extends Phaser.Scene {
   private deliveryscene;
-  private tomato: tomato;
-  private carrot: carrot;
-  private lettuce: lettuce;
-  private apple: apple;
-  private banana: banana;
-  private orange: orange;
-  private pineapple: pineapple;
-  private strawberry: strawberry;
-  private watermelon: watermelon;
-  private cheese: cheese;
-  private chicken: chicken;
-  private bacon: bacon;
-  private ham: ham;
-  private soda: soda;
-  private tea: tea;
-  private coffee: coffee;
-  private lemonade: lemonade;
-  private water: water;
+  private tomato: food;
+  private carrot: food;
+  private lettuce: food;
+  private apple: food;
+  private banana: food;
+  private orange: food;
+  private pineapple: food;
+  private strawberry: food;
+  private watermelon: food;
+  private cheese: food;
+  private chicken: food;
+  private bacon: food;
+  private ham: food;
+  private soda: food;
+  private tea: food;
+  private coffee: food;
+  private lemonade: food;
+  private water: food;
   private bag: bag;
   private player;
   cursorKeys;
+  score: number;
+  scoreLabel;
 
   constructor() {
     super({ key: 'DeliveryScene' });
@@ -103,7 +106,15 @@ export default class DeliveryScene extends Phaser.Scene {
     //Other Food Related Items
     //this.cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese");
 
+    /* 
+    this.physics.add.collider(this.bag, this.tomato, this.eatFood, function(bag, tomato){
+      tomato.destroy(true);
+    });
+
+    this.physics.add.overlap(this.bag, this.tomato, this.eatFood, undefined, this); */
+
     
+
 
    // let arr = [];
     //let soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda");
@@ -124,13 +135,13 @@ export default class DeliveryScene extends Phaser.Scene {
       chicken.setCollideWorldBounds(true);
       bacon.setCollideWorldBounds(true);
       ham.setCollideWorldBounds(true);
-    }
+    } 
     /* Phaser.Actions.Call(group.getChildren(), function(go) {
       go.setVelocityX(100)
-    }); */
+    });*/
 
     // group.getChildren() returns an array
-    let randomSprite = Phaser.Utils.Array.GetRandom(group.getChildren());
+    //let randomSprite = Phaser.Utils.Array.GetRandom(group.getChildren());
     
 
     let pictures = {'chicken': 'chicken.png', 'bacon': 'bacon.png', 'ham': 'ham.jpeg'}
@@ -155,6 +166,14 @@ export default class DeliveryScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1
     });
+  }
+
+
+  eatFood(bag, tomato){
+    tomato.destroy(true); 
+    //this.beamSound.play();
+    this.score += 5;
+    this.scoreLabel.text = "SCORE " + this.score;
   }
 
   update() {
