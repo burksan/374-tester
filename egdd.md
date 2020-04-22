@@ -35,8 +35,6 @@ You are a despondent delivery driver working at a fast food restaurant where you
 
 ## Core Gameplay Mechanics (Brief)
 
-*Give a very high-level description of any core gameplay mechanics*
-
 - Click and drag ingredients from the conveyor belt to the delivery bag.
 - Use the arrow keys to follow directions to get to the destination.
 - Click on the ingredient that aligns with the corresponding vocabulary term.
@@ -56,8 +54,6 @@ You are a despondent delivery driver working at a fast food restaurant where you
 - This would be assigned as supplementary practice in a course formally teaching introductory Spanish and/or French vocabulary.
 
 ## Learning Objectives
-
-*Remember, Learning Objectives are NOT simply topics. They are statements of observable behavior that a learner can do after the learning experience. You cannot observe someone "understanding" or "knowing" something.*
 
 - Match food names to appropriate item.
 - Identify and follow directional instructions based on the language integration.
