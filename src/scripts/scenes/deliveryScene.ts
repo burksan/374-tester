@@ -56,12 +56,12 @@ export default class DeliveryScene extends Phaser.Scene {
     this.deliveryscene.setOrigin(0,0);
   
     //Non-Food Related Items
-    let bag = this.add.image(this.scale.width / 2 - 900, this.scale.height / 2 + 400, "bag").setInteractive();
+    this.bag = this.add.image(this.scale.width / 2 - 900, this.scale.height / 2 + 400, "bag").setInteractive();
     
     //Vegetables
-    let tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
     //this.tomato.setScale(1);
-    this.input.setDraggable(tomato);
+    this.input.setDraggable(this.tomato);
 
     this.input.dragDistanceThreshold = 16;
     
@@ -166,6 +166,17 @@ export default class DeliveryScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1
     });
+
+    this.physics.add.collider(this.bag, this.tomato, function(bag, tomato){
+      tomato.destroy();
+    });
+
+    this.physics.add.overlap(this.bag, this.tomato, this.deleteFood, undefined, this);
+
+  }
+
+  deleteFood(bag, tomato){
+    bag.disableBody(true, true);
   }
 
 

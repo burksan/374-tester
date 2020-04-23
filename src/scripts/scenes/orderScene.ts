@@ -51,53 +51,56 @@ export default class OrderScene extends Phaser.Scene {
     this.orderscene = this.add.image(0,0, "orderscene");
     //this.deliveryscene.setOrigin(0,0);
   
+    //Non-Food Related Items
+    this.bag = this.add.image(this.scale.width / 2 - 900, this.scale.height / 2 + 400, "bag").setInteractive();
+    
     //Vegetables
-    let tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
     //this.tomato.setScale(0.5);
-    this.input.setDraggable(tomato);
-    let carrot = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "carrot").setInteractive();
-    this.input.setDraggable(carrot);
-    let lettuce = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lettuce").setInteractive();
-    this.input.setDraggable(lettuce);
+    this.input.setDraggable(this.tomato);
+    this.carrot = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "carrot").setInteractive();
+    this.input.setDraggable(this.carrot);
+    this.lettuce = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lettuce").setInteractive();
+    this.input.setDraggable(this.lettuce);
 
 
     //Fruits
-    let apple = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "apple").setInteractive();
-    this.input.setDraggable(apple);
-    let banana = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "banana").setInteractive();
-    this.input.setDraggable(banana);
-    let orange = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "orange").setInteractive();
-    this.input.setDraggable(orange);
-    let pineapple = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "pineapple").setInteractive();
-    this.input.setDraggable(pineapple);
-    let strawberry = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "strawberry").setInteractive();
-    this.input.setDraggable(strawberry);
-    let watermelon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "watermelon").setInteractive();
-    this.input.setDraggable(watermelon);
+    this.apple = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "apple").setInteractive();
+    this.input.setDraggable(this.apple);
+    this.banana = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "banana").setInteractive();
+    this.input.setDraggable(this.banana);
+    this.orange = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "orange").setInteractive();
+    this.input.setDraggable(this.orange);
+    this.pineapple = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "pineapple").setInteractive();
+    this.input.setDraggable(this.pineapple);
+    this.strawberry = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "strawberry").setInteractive();
+    this.input.setDraggable(this.strawberry);
+    this.watermelon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "watermelon").setInteractive();
+    this.input.setDraggable(this.watermelon);
 
     //Meats
-    let chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken").setInteractive();
-    this.input.setDraggable(chicken);
-    let bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon").setInteractive();
-    this.input.setDraggable(bacon);
-    let ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham").setInteractive();
-    this.input.setDraggable(ham);
+    this.chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken").setInteractive();
+    this.input.setDraggable(this.chicken);
+    this.bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon").setInteractive();
+    this.input.setDraggable(this.bacon);
+    this.ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham").setInteractive();
+    this.input.setDraggable(this.ham);
 
     //Drinks
-    let soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda").setInteractive();
-    this.input.setDraggable(soda);
-    let coffee = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "coffee").setInteractive();
-    this.input.setDraggable(coffee);
-    let tea = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tea").setInteractive();
-    this.input.setDraggable(tea);
-    let lemonade = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lemonade").setInteractive();
-    this.input.setDraggable(lemonade);
-    let water = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "water").setInteractive();
-    this.input.setDraggable(water);
+    this.soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda").setInteractive();
+    this.input.setDraggable(this.soda);
+    this.coffee = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "coffee").setInteractive();
+    this.input.setDraggable(this.coffee);
+    this.tea = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tea").setInteractive();
+    this.input.setDraggable(this.tea);
+    this.lemonade = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "lemonade").setInteractive();
+    this.input.setDraggable(this.lemonade);
+    this.water = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "water").setInteractive();
+    this.input.setDraggable(this.water);
 
     //Other Food Related Items
-    let cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese").setInteractive();
-    this.input.setDraggable(cheese);
+    this.cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese").setInteractive();
+    this.input.setDraggable(this.cheese);
 
     this.input.dragDistanceThreshold = 16;
     
