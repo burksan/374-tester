@@ -15,8 +15,6 @@ meta:
 
 # Overview
 
-*Notes written in italics must be deleted in the final version.*
-
 ## Elevator Pitch
 
 You are a despondent delivery driver working at a fast food restaurant where you have to prepare customer's orders and deliver them on your bike. Occasionally, customer's will give you orders in Spanish or French and it is your mission to deliver the best fast food experience possible. You are given food/direction labels with pictures to follow to help you accomplish this mission.
