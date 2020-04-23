@@ -43,6 +43,10 @@ export default class DeliveryScene extends Phaser.Scene {
   private water: food; */
   private bag: bag;
   private player;
+  private paper: any;
+  private food: any;
+  private foodList: any;
+  private foodDragged: any;
   cursorKeys;
   score: number;
   scoreLabel;
@@ -57,7 +61,15 @@ export default class DeliveryScene extends Phaser.Scene {
   
     //Non-Food Related Items
     this.bag = this.add.image(this.scale.width / 2 - 900, this.scale.height / 2 + 400, "bag").setInteractive();
-    
+    this.paper = this.add.image(200, 200, "paper");
+    this.add.text(50,50, "Order:",{fill:"#000000", fontSize:"40px"});
+    this.add.text(60,100, "chicken",{fill:"#000000", fontSize:"35px"});
+    this.add.text(60,150, "ham",{fill:"#000000", fontSize:"35px"});
+    this.add.text(60,200, "bacon",{fill:"#000000", fontSize:"35px"});
+
+    this.food = ["chicken", "ham", "bacon"];
+    this.foodList = [];
+
     //Vegetables
     this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
     
@@ -93,9 +105,18 @@ export default class DeliveryScene extends Phaser.Scene {
     //this.watermelon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "watermelon");
 
     //Meats
-    this.chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken");
-    this.bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon");
-    this.ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham");
+    this.chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken").setInteractive();
+    this.input.setDraggable(this.chicken);
+    this.bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon").setInteractive();
+    this.input.setDraggable(this.bacon);
+    this.ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham").setInteractive();
+    this.input.setDraggable(this.ham);
+
+    this.input.on('pointerdown', this.startDrag, this);
+    this.physics.add.overlap(this.bag, this.chicken, this.eatFood, undefined, this);
+    this.physics.add.overlap(this.bag, this.ham, this.eatFood, undefined, this);
+    this.physics.add.overlap(this.bag, this.bacon, this.eatFood, undefined, this);
+
 
     //Drinks
     //this.soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda");
@@ -180,6 +201,7 @@ export default class DeliveryScene extends Phaser.Scene {
 
   }
 
+  
   moveChicken(chicken, speed){
     chicken.x += speed;
     if(chicken.x > 2500){
@@ -189,7 +211,7 @@ export default class DeliveryScene extends Phaser.Scene {
 
   resetChicken(chicken){
     chicken.x = 0;
-    let randomY = Phaser.Math.Between(0, 1600);
+    let randomY = Phaser.Math.Between(0, 1800);
     chicken.y = randomY;
   }
   moveHam(ham, speed){
@@ -201,7 +223,7 @@ export default class DeliveryScene extends Phaser.Scene {
 
   resetHam(ham){
     ham.x = 0;
-    let randomY = Phaser.Math.Between(0, 1600);
+    let randomY = Phaser.Math.Between(0, 1800);
     ham.y = randomY;
   }
   moveBacon(bacon, speed){
@@ -213,7 +235,7 @@ export default class DeliveryScene extends Phaser.Scene {
 
   resetBacon(bacon){
     bacon.x = 0;
-    let randomY = Phaser.Math.Between(0, 1600);
+    let randomY = Phaser.Math.Between(0, 1800);
     bacon.y = randomY;
   }
   
@@ -230,6 +252,25 @@ export default class DeliveryScene extends Phaser.Scene {
     this.score += 5;
     this.scoreLabel.text = "SCORE " + this.score;
   }
+
+  startDrag(pointer, targets){
+    this.input.off('pointerdown', this.startDrag, this);
+    this.foodDragged=targets[0];
+    this.input.on('pointermove', this.doDrag, this);
+    this.input.on('pointerup', this.stopDrag, this);
+
+  }
+  doDrag(pointer){
+    this.foodDragged.x=pointer.x;
+    this.foodDragged.y=pointer.y;
+  }
+
+  stopDrag(){
+    this.input.on('pointerdown', this.startDrag, this);
+    this.input.off('pointermove', this.doDrag, this);
+    this.input.off('pointerup', this.stopDrag, this);
+  }
+
 
   update() {
     this.moveChicken(this.chicken, 4);

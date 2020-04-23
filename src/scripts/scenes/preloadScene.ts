@@ -41,6 +41,7 @@ export default class PreloadScene extends Phaser.Scene {
     //Non-Food Related Images
     this.load.image("bag", "assets/images/bag.png");
     this.load.spritesheet("player", "assets/images/player.png", {frameWidth: 16, frameHeight: 24});
+    this.load.image("paper", "assets/images/paper.png");
 
   }
 
