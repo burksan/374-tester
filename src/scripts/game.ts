@@ -20,7 +20,7 @@ const config: GameConfig = {
     //This Works
     //scene: [PreloadScene, MainScene],
     //This Doesn't
-    scene: [PreloadScene, DeliveryScene, OrderScene],
+    scene: [PreloadScene, OrderScene, DeliveryScene],
     physics: {
         default: 'arcade',
         arcade: {
