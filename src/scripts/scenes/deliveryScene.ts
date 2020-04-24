@@ -45,7 +45,7 @@ export default class DeliveryScene extends Phaser.Scene {
   private bag: bag;
   private player;
   private paper: any;
-  private food: any;
+  private food: food[];
   private foodList: any;
   private foodDragged: any;
   cursorKeys;
@@ -71,16 +71,16 @@ export default class DeliveryScene extends Phaser.Scene {
     this.add.text(60,150, "ham",{fill:"#000000", fontSize:"35px"});
     this.add.text(60,200, "bacon",{fill:"#000000", fontSize:"35px"});
 
-    this.food = ["chicken", "ham", "bacon"];
-    this.foodList = [];
+    //this.food = ["chicken", "ham", "bacon"];
+    //this.foodList = [];
 
-    //let foodGroup = this.physics.add.group();
-    //foodGroup.add(this.tomato);
-    //foodGroup.add(this.chicken);
-    //foodGroup.add(this.ham);
-    //foodGroup.add(this.bacon);
-    //foodGroup.add(this.orange);
-    //foodGroup.add(this.lettuce);
+    let food = this.physics.add.group();
+    food.add(this.tomato);
+    food.add(this.chicken);
+    food.add(this.ham);
+    food.add(this.bacon);
+    //food.add(this.orange);
+    //food.add(this.lettuce);
 
     //Vegetables
     this.tomato = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
@@ -151,7 +151,7 @@ export default class DeliveryScene extends Phaser.Scene {
 
     
     this.physics.add.collider(this.bag, this.tomato, this.eatFood, function(bag, tomato){
-      tomato.destroy(true);
+      food.destroy(true);
     });
 
     this.physics.add.overlap(this.bag, this.tomato, this.eatFood, undefined, this);
@@ -215,11 +215,11 @@ export default class DeliveryScene extends Phaser.Scene {
       repeat: -1
     });
 
-    this.physics.add.collider(this.bag, this.food, function(bag, food){
+    this.physics.add.collider(this.bag, food, function(bag, food){
       food.destroy();
     });
 
-    this.physics.add.overlap(this.bag, this.food, this.deleteFood, undefined, this);
+    this.physics.add.overlap(this.bag, food, this.deleteFood, undefined, this);
 
 
 
@@ -277,7 +277,7 @@ https://phaser.io/tutorials/coding-tips-003
   
 
 
-  deleteFood(bag, food){
+  deleteFood(bag, tomato){
     bag.disableBody(true, true);
   }
 
