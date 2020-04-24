@@ -23,6 +23,7 @@ import { GameObjects } from 'phaser';
 
 export default class DeliveryScene extends Phaser.Scene {
   private deliveryscene;
+  private orderscene;
   private tomato: any;
   /* private carrot: food;
   private lettuce: food;
@@ -56,8 +57,11 @@ export default class DeliveryScene extends Phaser.Scene {
   }
 
   create() {
-    this.deliveryscene = this.add.image(0,0, "deliveryscene");
-    this.deliveryscene.setOrigin(0,0);
+    //this.deliveryscene = this.add.image(0,0, "deliveryscene");
+    //this.deliveryscene.setOrigin(0,0);
+
+    this.orderscene = this.add.image(0,0, "orderscene");
+    this.orderscene.setOrigin(0,0);
   
     //Non-Food Related Items
     this.bag = this.add.image(this.scale.width / 2 - 900, this.scale.height / 2 + 400, "bag").setInteractive();
