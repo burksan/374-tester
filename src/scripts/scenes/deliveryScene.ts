@@ -83,7 +83,9 @@ export default class DeliveryScene extends Phaser.Scene {
     //foodGroup.add(this.lettuce);
 
     //Vegetables
-    this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    this.tomato = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    this.tomato.setCollideWorldBounds(true);
+    this.tomato.onWorldBounds = true;
     
     //this.tomato.setScale(1);
     this.input.setDraggable(this.tomato);
@@ -117,12 +119,19 @@ export default class DeliveryScene extends Phaser.Scene {
     //this.watermelon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "watermelon");
 
     //Meats
-    this.chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken").setInteractive();
+    this.chicken = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken").setInteractive();
+    this.chicken.setCollideWorldBounds(true);
+    this.chicken.onWorldBounds = true;
     this.input.setDraggable(this.chicken);
-    this.bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon").setInteractive();
+    this.bacon = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon").setInteractive();
+    this.bacon.setCollideWorldBounds(true);
+    this.bacon.onWorldBounds = true;
     this.input.setDraggable(this.bacon);
-    this.ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham").setInteractive();
+    this.ham = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham").setInteractive();
+    this.ham.setCollideWorldBounds(true);
+    this.ham.onWorldBounds = true;
     this.input.setDraggable(this.ham);
+    
 
     this.input.on('pointerdown', this.startDrag, this);
     this.physics.add.overlap(this.bag, this.chicken, this.eatFood, undefined, this);
@@ -194,6 +203,7 @@ export default class DeliveryScene extends Phaser.Scene {
 
     this.player = this.physics.add.sprite(this.scale.width / 2-8, this.scale.height - 64, "player");
     this.player.setScale(10);
+    this.player.setGravity(0,0);
     this.player.play("thrust");
     this.cursorKeys = this.input.keyboard.createCursorKeys();
     this.player.setCollideWorldBounds(true);
@@ -211,9 +221,23 @@ export default class DeliveryScene extends Phaser.Scene {
 
     this.physics.add.overlap(this.bag, this.food, this.deleteFood, undefined, this);
 
+
+
+    /*
+    
+https://phaser.io/tutorials/coding-tips-003
+
+    this.physics.arcade.collide(
+      this.food, this.conveyorbelt, 
+      this.setFriction, null, this
+  );*/
+
   }
 
-  
+  /*setFriction: function (food, conveyorbelt) {
+    food.body.x -= conveyorbelt.body.x - conveyorbelt.body.prev.x;
+  }*/
+
   moveChicken(chicken, speed){
     chicken.x += speed;
     if(chicken.x > 2500){
