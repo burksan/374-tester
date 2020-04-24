@@ -70,6 +70,14 @@ export default class DeliveryScene extends Phaser.Scene {
     this.food = ["chicken", "ham", "bacon"];
     this.foodList = [];
 
+    //let foodGroup = this.physics.add.group();
+    //foodGroup.add(this.tomato);
+    //foodGroup.add(this.chicken);
+    //foodGroup.add(this.ham);
+    //foodGroup.add(this.bacon);
+    //foodGroup.add(this.orange);
+    //foodGroup.add(this.lettuce);
+
     //Vegetables
     this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
     
@@ -193,11 +201,11 @@ export default class DeliveryScene extends Phaser.Scene {
       repeat: -1
     });
 
-    this.physics.add.collider(this.bag, this.tomato, function(bag, tomato){
-      tomato.destroy();
+    this.physics.add.collider(this.bag, this.food, function(bag, food){
+      food.destroy();
     });
 
-    this.physics.add.overlap(this.bag, this.tomato, this.deleteFood, undefined, this);
+    this.physics.add.overlap(this.bag, this.food, this.deleteFood, undefined, this);
 
   }
 
@@ -241,7 +249,7 @@ export default class DeliveryScene extends Phaser.Scene {
   
 
 
-  deleteFood(bag, tomato){
+  deleteFood(bag, food){
     bag.disableBody(true, true);
   }
 
