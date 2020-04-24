@@ -7,7 +7,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     //Scenes
     this.load.image("deliveryscene", "assets/images/deliveryscene.png");
-    this.load.image("orderscene", "assets/images/orderScene.png");
+    this.load.image("orderscene", "assets/images/orderscene.png");
 
     //Vegetables
     this.load.image("tomato", "assets/images/tomato.png");
@@ -41,6 +41,7 @@ export default class PreloadScene extends Phaser.Scene {
     //Non-Food Related Images
     this.load.image("bag", "assets/images/bag.png");
     this.load.spritesheet("player", "assets/images/player.png", {frameWidth: 16, frameHeight: 24});
+    this.load.image("paper", "assets/images/paper.png");
 
   }
 

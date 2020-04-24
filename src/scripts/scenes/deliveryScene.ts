@@ -1,4 +1,4 @@
-import tomato from '../objects/tomato';
+/* import tomato from '../objects/tomato';
 import carrot from '../objects/carrot';
 import lettuce from '../objects/lettuce';
 import apple from '../objects/apple';
@@ -15,34 +15,41 @@ import soda from '../objects/soda';
 import tea from '../objects/tea';
 import coffee from '../objects/coffee';
 import lemonade from '../objects/lemonade';
-import water from '../objects/water';
+import water from '../objects/water'; */
+import food from '../objects/food';
 import bag from '../objects/bag';
 import player from '../objects/player';
 import { GameObjects } from 'phaser';
 
 export default class DeliveryScene extends Phaser.Scene {
   private deliveryscene;
-  private tomato: tomato;
-  private carrot: carrot;
-  private lettuce: lettuce;
-  private apple: apple;
-  private banana: banana;
-  private orange: orange;
-  private pineapple: pineapple;
-  private strawberry: strawberry;
-  private watermelon: watermelon;
-  private cheese: cheese;
-  private chicken: chicken;
-  private bacon: bacon;
-  private ham: ham;
-  private soda: soda;
-  private tea: tea;
-  private coffee: coffee;
-  private lemonade: lemonade;
-  private water: water;
+  private tomato: any;
+  /* private carrot: food;
+  private lettuce: food;
+  private apple: food;
+  private banana: food;
+  private orange: food;
+  private pineapple: food;
+  private strawberry: food;
+  private watermelon: food;
+  private cheese: food; */
+  private chicken: any;
+  private bacon: any;
+  private ham: any;
+  /* private soda: food;
+  private tea: food;
+  private coffee: food;
+  private lemonade: food;
+  private water: food; */
   private bag: bag;
   private player;
+  private paper: any;
+  private food: any;
+  private foodList: any;
+  private foodDragged: any;
   cursorKeys;
+  score: number;
+  scoreLabel;
 
   constructor() {
     super({ key: 'DeliveryScene' });
@@ -54,9 +61,18 @@ export default class DeliveryScene extends Phaser.Scene {
   
     //Non-Food Related Items
     this.bag = this.add.image(this.scale.width / 2 - 900, this.scale.height / 2 + 400, "bag").setInteractive();
-    
+    this.paper = this.add.image(200, 200, "paper");
+    this.add.text(50,50, "Order:",{fill:"#000000", fontSize:"40px"});
+    this.add.text(60,100, "chicken",{fill:"#000000", fontSize:"35px"});
+    this.add.text(60,150, "ham",{fill:"#000000", fontSize:"35px"});
+    this.add.text(60,200, "bacon",{fill:"#000000", fontSize:"35px"});
+
+    this.food = ["chicken", "ham", "bacon"];
+    this.foodList = [];
+
     //Vegetables
     this.tomato = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
+    
     //this.tomato.setScale(1);
     this.input.setDraggable(this.tomato);
 
@@ -89,9 +105,18 @@ export default class DeliveryScene extends Phaser.Scene {
     //this.watermelon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "watermelon");
 
     //Meats
-    //this.chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken");
-    //this.bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon");
-    //this.ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham");
+    this.chicken = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken").setInteractive();
+    this.input.setDraggable(this.chicken);
+    this.bacon = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon").setInteractive();
+    this.input.setDraggable(this.bacon);
+    this.ham = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham").setInteractive();
+    this.input.setDraggable(this.ham);
+
+    this.input.on('pointerdown', this.startDrag, this);
+    this.physics.add.overlap(this.bag, this.chicken, this.eatFood, undefined, this);
+    this.physics.add.overlap(this.bag, this.ham, this.eatFood, undefined, this);
+    this.physics.add.overlap(this.bag, this.bacon, this.eatFood, undefined, this);
+
 
     //Drinks
     //this.soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda");
@@ -104,6 +129,14 @@ export default class DeliveryScene extends Phaser.Scene {
     //this.cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese");
 
     
+    this.physics.add.collider(this.bag, this.tomato, this.eatFood, function(bag, tomato){
+      tomato.destroy(true);
+    });
+
+    this.physics.add.overlap(this.bag, this.tomato, this.eatFood, undefined, this);
+
+    
+
 
    // let arr = [];
     //let soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda");
@@ -113,24 +146,28 @@ export default class DeliveryScene extends Phaser.Scene {
     let randFood = foodarr[Math.floor(Math.random() * 3)];
 
     // trying to group the images
-    let group = this.physics.add.group();
+    /* let group = this.physics.add.group();
     for(let i = 0; i < 3; i++){
-      let chicken = this.physics.add.sprite(this.scale.width / 2, this.scale.height / 2, "chicken");
-      let bacon = this.physics.add.sprite(this.scale.width / 2 - 500, this.scale.height / 2, "bacon");
-      let ham = this.physics.add.sprite(this.scale.width / 2 - 800, this.scale.height / 2, "ham");   
+      let chicken = this.physics.add.sprite(this.scale.width / 2, this.scale.height / 2, "chicken").setInteractive();
+      let bacon = this.physics.add.sprite(this.scale.width / 2 - 500, this.scale.height / 2, "bacon").setInteractive();
+      let ham = this.physics.add.sprite(this.scale.width / 2 - 800, this.scale.height / 2, "ham").setInteractive();   
       group.add(chicken);
       group.add(bacon);
       group.add(ham);
       chicken.setCollideWorldBounds(true);
       bacon.setCollideWorldBounds(true);
       ham.setCollideWorldBounds(true);
-    }
+      group.setVelocityX(300);
+      group.setVelocityY(-300);
+      
+    }  */
+    
     /* Phaser.Actions.Call(group.getChildren(), function(go) {
       go.setVelocityX(100)
-    }); */
+    });*/
 
     // group.getChildren() returns an array
-    let randomSprite = Phaser.Utils.Array.GetRandom(group.getChildren());
+    //let randomSprite = Phaser.Utils.Array.GetRandom(group.getChildren());
     
 
     let pictures = {'chicken': 'chicken.png', 'bacon': 'bacon.png', 'ham': 'ham.jpeg'}
@@ -164,11 +201,81 @@ export default class DeliveryScene extends Phaser.Scene {
 
   }
 
+  
+  moveChicken(chicken, speed){
+    chicken.x += speed;
+    if(chicken.x > 2500){
+      this.resetChicken(chicken);
+    }
+  }
+
+  resetChicken(chicken){
+    chicken.x = 0;
+    let randomY = Phaser.Math.Between(0, 1800);
+    chicken.y = randomY;
+  }
+  moveHam(ham, speed){
+    ham.x += speed;
+    if(ham.x > 2500){
+      this.resetHam(ham);
+    }
+  }
+
+  resetHam(ham){
+    ham.x = 0;
+    let randomY = Phaser.Math.Between(0, 1800);
+    ham.y = randomY;
+  }
+  moveBacon(bacon, speed){
+    bacon.x += speed;
+    if(bacon.x > 2500){
+      this.resetChicken(bacon);
+    }
+  }
+
+  resetBacon(bacon){
+    bacon.x = 0;
+    let randomY = Phaser.Math.Between(0, 1800);
+    bacon.y = randomY;
+  }
+  
+
+
   deleteFood(bag, tomato){
     bag.disableBody(true, true);
   }
 
+
+  eatFood(bag, tomato){
+    tomato.destroy(true); 
+    //this.beamSound.play();
+    this.score += 5;
+    this.scoreLabel.text = "SCORE " + this.score;
+  }
+
+  startDrag(pointer, targets){
+    this.input.off('pointerdown', this.startDrag, this);
+    this.foodDragged=targets[0];
+    this.input.on('pointermove', this.doDrag, this);
+    this.input.on('pointerup', this.stopDrag, this);
+
+  }
+  doDrag(pointer){
+    this.foodDragged.x=pointer.x;
+    this.foodDragged.y=pointer.y;
+  }
+
+  stopDrag(){
+    this.input.on('pointerdown', this.startDrag, this);
+    this.input.off('pointermove', this.doDrag, this);
+    this.input.off('pointerup', this.stopDrag, this);
+  }
+
+
   update() {
+    this.moveChicken(this.chicken, 4);
+    this.moveHam(this.ham, 4);
+    this.moveBacon(this.bacon, 4);
     this.movePlayerManager();
   }
 
