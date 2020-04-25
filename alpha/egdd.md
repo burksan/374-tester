@@ -4,7 +4,8 @@ waltz:
 meta:
   version: 0.0.2
   gdd authors:
-    - Your name goes here
+    - Alyssa Burks
+    - Casey Ljuba
   template authors:
     - Austin Cory Bart <acbart@udel.edu>
     - Mark Sheriff
@@ -14,170 +15,161 @@ meta:
 
 # Overview
 
-*Notes written in italics must be deleted in the final version.*
-
 ## Elevator Pitch
 
-*A one sentence pitch for your game. Pretend that your were pitching your game to a executive going to the elevator. You have less than 60 Seconds. Check [this resource](http://www.gameacademy.com/perfecting-indie-games-elevator-pitch/) for more information.*
+You are a despondent delivery driver working at a fast food restaurant where you have to prepare customer's orders and deliver them on your bike. Occasionally, customer's will give you orders in Spanish or French and it is your mission to deliver the best fast food experience possible. You are given food/direction labels with pictures to follow to help you accomplish this mission.
 
 ## Influences (Brief)
 
-- *Influence #1*:
-  - Medium: *(Television, Games, Literature, Movies, etc.)*
-  - Explanation: *In one paragraph or less, explain why this is an influence.*
-- *Influence #2*:
-  - Medium: *(Television, Games, Literature, Movies, etc.)*
-  - Explanation: *In one paragraph or less, explain why this is an influence.*
-- *Influence #3*:
-  - Medium: *(Television, Games, Literature, Movies, etc.)*
-  - Explanation: *In one paragraph or less, explain why this is an influence.*
+- Drinks Maker: Coffee Shop Juice Tycoon:
+  - Medium: Games
+  - Explanation: The game idea stemmed from a tycoon-esque simulator. The exact one was not thought of so an arbitrary one was selected.
+- Uber Eats:
+  - Medium: Delivery Service
+  - Explanation: The idea of a game that simulates being an Uber Eats/Door Dash/Postmates etc. deliverer seemed amusing and a good way to integrate directional instructions into the vocabulary of the game.
+- Rosetta Stone:
+  - Medium: Software
+  - Explanation: There was a slight frustration surrounding the concept of Rosetta Stone not being a "fun enough" way to learn. The learning integration could be more enjoyable in a gaming environment, rather than an environment geared towards learning.
 
 ## Core Gameplay Mechanics (Brief)
 
-*Give a very high-level description of any core gameplay mechanics*
-
-- *Gameplay Mechanic #1*
-- *Gameplay Mechanic #2*
-- *Gameplay Mechanic #3*
-- *Gameplay Mechanic #4*
+- Click and drag ingredients from the conveyor belt to the delivery bag.
+- Use the arrow keys to follow directions to get to the destination.
+- Click on the ingredient that aligns with the corresponding vocabulary term.
 
 # Learning Aspects
 
 ## Learning Domains
 
-*Briefly list any and all of the disciplines and learning domains for this subject.*
+- Introduction to Spanish and French
 
 ## Target Audiences
 
-*Who are your learners?*
+- Upper level grade school students (tentatively 5th/6th grade students).
 
 ## Target Contexts
 
-*Describe what kinds of formal and informal learning contexts this will be used in (e.g., courses, k-12 computer labs during free time).*
+- This would be assigned as supplementary practice in a course formally teaching introductory Spanish and/or French vocabulary.
 
 ## Learning Objectives
 
-*Remember, Learning Objectives are NOT simply topics. They are statements of observable behavior that a learner can do after the learning experience. You cannot observe someone "understanding" or "knowing" something.*
-
-- *Formal Learning Objective #1*
-- *Formal Learning Objective #2*
-- *Formal Learning Objective #3*
+- Match food names to appropriate item.
+- Identify and follow directional instructions based on the language integration.
+- Identify which language a word is in.
 
 ## Prerequisite Knowledge
 
-*What do they need to know prior to trying this game?*
 
-- *Prerequisite Learning Objective #1*
-- *Prerequisite Learning Objective #2*
+- Identify and match various food items to their English name.
+- Identify and match various directions from Spanish and/or French to their English name.
 
 ## Assessment Measures
 
-*Describe how the learning will be assessed, e.g., pre/post multiple-choice test, or SAT, or some other instrument.*
-
-*If proposing a new instrument, briefly and concisely list some example assessment questions.*
+A short multiple choice post quiz will be provided at the end of the game to measure recognition of vocabulary.
 
 # What sets this project apart?
 
-- *Reason #1*
-- *Reason #2*
-- *Reason #3*
-- *Reason #4*
-- *etc.*
+- Introduction courses rely heavily on memorization of basic vocabulary, this game will challenge the player to both complete the game and allow the player to learn new vocabulary through incremental integration of a foreign language.
 
 # Player Interaction Patterns and Modes
 
 ## Player Interaction Pattern
 
-*How many players / how it works / etc.*
+This is a single player game where the player clicks and drags items from the conveyor belt into the customer's bag. The user will then use arrow keys to direct the character in the right direction.
 
 ## Player Modes
 
-- *Player mode #1*: *Description*
-- *Player mode #2*: *Description*
-- *etc.*
+- Single player: you repeatedly advance through rounds and levels until you reach the end.
 
 # Gameplay Objectives
 
-- *Primary Objective #1*: *Description*
-- *Primary Objective #2*: *Description*
-- *etc.*
+- Prepare the customer's order correctly:
+    - Description: Read the customers' order and properly prepare it/deliver it to them.
+    - Alignment: Match food names to appropriate item.
+- Advance to the next level:
+    - Description: Get 4 rounds correct to advance to the next level
+    - Alignment: Match food names to appropriate item. Identify and follow directional instructions based on the language integration. Identify which language a word is in.
 
 # Procedures/Actions
 
-*Describe the control scheme and what actions a user can take in the game.*
+You can click and drag (to translate food from the conveyor belt to the delivery bag) the cursor through regions of the screen.
+
+You can use the arrow keys to direct the player towards their destination.
 
 # Rules
 
-*What resources are available to the player that they make use of?  How does this affect gameplay?*
+- The player has to add the correct items to the bag, according to the checklist/customer's order; otherwise, there are points deducted at the end.
+- The player has to direct themselves toward the customer's destination to deliver the food, otherwise they lose stars (points) and have an angry customer at the end.
 
 # Objects/Entities
 
-*What other things are in the world that you need to design?*
+- The player
+- Customer
+- Conveyor belt
+- Food
+- Directional pictures
+- Food labels
+- Neighborhood
+- Order bag
+- Food checklist
+- Bike
 
 ## Core Gameplay Mechanics (Detailed)
 
-  - *Core Gameplay Mechanic #1*
-    - Details: *Describe in 2 paragraphs or less*
-    - How it works: *Describe in 2 paragraphs or less*
-  - *Core Gameplay Mechanic #2*
-    - Details: *Describe in 2 paragraphs or less*
-    - How it works: *Describe in 2 paragraphs or less*
-  - *Core Gameplay Mechanic #3*
-    - Details: *Describe in 2 paragraphs or less*
-    - How it works: *Describe in 2 paragraphs or less*
-  - *Core Gameplay Mechanic #4*
-    - Details: *Describe in 2 paragraphs or less*
-    - How it works: *Describe in 2 paragraphs or less*
+- Click and drag ingredients from the conveyor belt to the delivery bag: You can click on different food items going along the conveyor belt and add them by dragging them to the bag. You can drag items back and forth before placing them in the bag.
+- Use the arrow keys to follow directions to get to the destination: You control your player on a bike trying to get to the customer's house, using arrow keys to follow the given directions. You can stop at the wrong house or go the wrong direction and lose points. You can turn around if you go the wrong way.
+- Click on the ingredient that aligns with the corresponding vocabulary term: You have to add ingredients to the bag based on the vocab term by clicking and dragging item from the conveyor belt to the order bag. If the incorrect ingredient is added to the bag (whether it be an extra item or incorrect item) it will be removed upon the quality check (determinent of game advancement) and the player will have to fix the order by adding the correct items.
+
+
     
 ## Feedback
 
-*Explicitly describe what visual/audio/etc. indicators there that give players feedback on their progress towards their gameplay objectives (and ideally the learning objectives).*
+- Adding the correct item to the bag adds a check mark to the checklist; adding the wrong item adds an X to the list.
+- Going in the wrong direction will cause you to lose either half a star or a whole star (out of 5).
 
 # Story and Gameplay
 
+## Presentation of Rules
+
+- A speech bubble from your boss that says "Click and drag items" at the beginning of the food stage; then he'll return at the beginning of the delivery stage to say "Use your arrow keys".
+
+## Presentation of Content
+
+The game intends to teach basic vocab in the target language by showing a picture of the item and the name in English for the first level, then the picture and name in the target language for the next level, and finally just the name of the item in the target language. Same for the directions.
+
 ## Story (Brief)
 
-*The Summary or TL;DR version of below*
+You work as a food delivery person trying to take customer's orders and delivery it to them based on the order's language.
 
-## Story (Detailed)
+## Storyboarding
 
-*Go into as much detail as needs be. Spare no detail. Use Mind Mapping software to get your point across*
-
-## Gameplay (Brief)
-
-*The Summary version of below*
-
-## Gameplay (Detailed)
-
-*Go into as much detail as needs be. Spare no detail. Combine this with the game mechanics section above*
+![storyboard](storyboard.jpeg)
 
 # Assets Needed
+
+## Aethestics
+
+The aesthetics will be those similar to the game Happy Wheels (bright colors for the most part).
 
 ## Graphical
 
 - Characters List
-  - *Characters 1*
-  - *Characters 2*
-  - *...*
+  - Player
+  - Boss NPC
+  - Customer NPC
 - Textures:
-  - *Texture 1*
-  - *Texture 2*
-  - *...*
+  - N/A
 - Environment Art/Textures:
-  - *Environment Texture 1*
-  - *Environment Texture 2*
-  - *...*
+  - The background of the neighborhood will be houses and multiple streets
+  - The background of the food place will be a moving conveyor belt
+
 
 ## Audio
 
-*Game region/phase/time are ways of designating a particularly important place in the game.*
 
 - Music List (Ambient sound)
-  - *Game region/phase/time*: *Example 1*, *Example 2*
-  - *Game region/phase/time*: *Example 3*, *Example 4*
+  - No ambient music is planned for this project.
   
-*Game Interactions are things that trigger SFX, like character movement, hitting a spiky enemy, collecting a coin.*
 
 - Sound List (SFX)
-  - *Game Interaction*: *Example 1*, *Example 2*
-  - *Game Interaction*: *Example 3*, *Example 4*
+  - No sound effects required.
