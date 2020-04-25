@@ -45,9 +45,12 @@ export default class DeliveryScene extends Phaser.Scene {
   private bag: bag;
   private player;
   private paper: any;
-  private food: food[];
+  private orderDone: any;
+  private food: any;
+  private foods: Array<any>;
   private foodList: any;
   private foodDragged: any;
+  private order: any;
   cursorKeys;
   score: number;
   scoreLabel;
@@ -57,6 +60,7 @@ export default class DeliveryScene extends Phaser.Scene {
   }
 
   create() {
+    
     //this.deliveryscene = this.add.image(0,0, "deliveryscene");
     //this.deliveryscene.setOrigin(0,0);
 
@@ -64,28 +68,21 @@ export default class DeliveryScene extends Phaser.Scene {
     this.orderscene.setOrigin(0,0);
   
     //Non-Food Related Items
-    this.bag = this.add.image(this.scale.width / 2 - 900, this.scale.height / 2 + 400, "bag").setInteractive();
+    this.bag = this.physics.add.image(this.scale.width / 2 - 900, this.scale.height / 2 + 400, "bag");
     this.paper = this.add.image(200, 200, "paper");
     this.add.text(50,50, "Order:",{fill:"#000000", fontSize:"40px"});
-    this.add.text(60,100, "chicken",{fill:"#000000", fontSize:"35px"});
-    this.add.text(60,150, "ham",{fill:"#000000", fontSize:"35px"});
-    this.add.text(60,200, "bacon",{fill:"#000000", fontSize:"35px"});
+    this.add.text(60,100, "chicken (pollo)",{fill:"#000000", fontSize:"35px"});
+    this.add.text(60,150, "ham (jamon)",{fill:"#000000", fontSize:"35px"});
+    this.add.text(60,200, "bacon (tocino)",{fill:"#000000", fontSize:"35px"});
+    this.add.text(60, 400, "drag the food into the bag to fulfill the order", {fill:"#000000", fontSize:"40px"})
 
-    //this.food = ["chicken", "ham", "bacon"];
-    //this.foodList = [];
-
-    let food = this.physics.add.group();
-    food.add(this.tomato);
-    food.add(this.chicken);
-    food.add(this.ham);
-    food.add(this.bacon);
-    //food.add(this.orange);
-    //food.add(this.lettuce);
+    this.foods = ["chicken", "ham", "bacon"];
+    this.foodList = [];
 
     //Vegetables
     this.tomato = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "tomato").setInteractive();
-    this.tomato.setCollideWorldBounds(true);
-    this.tomato.onWorldBounds = true;
+    //this.tomato.setCollideWorldBounds(true);
+    //this.tomato.onWorldBounds = true;
     
     //this.tomato.setScale(1);
     this.input.setDraggable(this.tomato);
@@ -120,23 +117,18 @@ export default class DeliveryScene extends Phaser.Scene {
 
     //Meats
     this.chicken = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "chicken").setInteractive();
-    this.chicken.setCollideWorldBounds(true);
-    this.chicken.onWorldBounds = true;
+    //this.chicken.setCollideWorldBounds(true);
+    //this.chicken.onWorldBounds = true;
     this.input.setDraggable(this.chicken);
     this.bacon = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "bacon").setInteractive();
-    this.bacon.setCollideWorldBounds(true);
-    this.bacon.onWorldBounds = true;
+    //this.bacon.setCollideWorldBounds(true);
+    //this.bacon.onWorldBounds = true;
     this.input.setDraggable(this.bacon);
     this.ham = this.physics.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "ham").setInteractive();
-    this.ham.setCollideWorldBounds(true);
-    this.ham.onWorldBounds = true;
+   // this.ham.setCollideWorldBounds(true);
+   // this.ham.onWorldBounds = true;
     this.input.setDraggable(this.ham);
-    
-
-    this.input.on('pointerdown', this.startDrag, this);
-    this.physics.add.overlap(this.bag, this.chicken, this.eatFood, undefined, this);
-    this.physics.add.overlap(this.bag, this.ham, this.eatFood, undefined, this);
-    this.physics.add.overlap(this.bag, this.bacon, this.eatFood, undefined, this);
+  
 
 
     //Drinks
@@ -149,19 +141,16 @@ export default class DeliveryScene extends Phaser.Scene {
     //Other Food Related Items
     //this.cheese = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "cheese");
 
+
+    // either uncomment this and comment out collider stuff further down or leave it
+    /* this.input.on('pointerdown', this.startDrag, this);
+    this.physics.add.overlap(this.bag, this.chicken, this.eatFood, undefined, this); //eatfood->orderbag
+    this.physics.add.overlap(this.bag, this.bacon, this.eatFood, undefined, this);
+    this.physics.add.overlap(this.bag, this.ham, this.eatFood, undefined, this); */
+
     
-    this.physics.add.collider(this.bag, this.tomato, this.eatFood, function(bag, tomato){
-      food.destroy(true);
-    });
+    this.orderDone = false;
 
-    this.physics.add.overlap(this.bag, this.tomato, this.eatFood, undefined, this);
-
-    
-
-
-   // let arr = [];
-    //let soda = this.add.image(this.scale.width / 2 - 50, this.scale.height / 2, "soda");
-    //arr.push(soda); // that doesnt work
 
     let foodarr = [["chicken", "pollo", "poulet"], ["bacon", "tocino", "bacon"], ["ham", "jamon", "jambon"]];
     let randFood = foodarr[Math.floor(Math.random() * 3)];
@@ -189,8 +178,9 @@ export default class DeliveryScene extends Phaser.Scene {
 
     // group.getChildren() returns an array
     //let randomSprite = Phaser.Utils.Array.GetRandom(group.getChildren());
-    
 
+
+    // dictionary?
     let pictures = {'chicken': 'chicken.png', 'bacon': 'bacon.png', 'ham': 'ham.jpeg'}
     let filename = pictures['chicken'];
     /*with open(filename. 'rb') as f:
@@ -215,13 +205,31 @@ export default class DeliveryScene extends Phaser.Scene {
       repeat: -1
     });
 
-    this.physics.add.collider(this.bag, food, function(bag, food){
-      food.destroy();
-    });
 
-    this.physics.add.overlap(this.bag, food, this.deleteFood, undefined, this);
+    // collisions that make everything freeze for some raison
+    this.physics.add.collider(this.bag, this.tomato, this.eatFood, function(bag, tomato){
+      tomato.destroy(true);
+    }, this);
 
+    this.physics.add.overlap(this.bag, this.tomato, this.eatFood, undefined, this);
 
+    this.physics.add.collider(this.bag, this.chicken, this.eatFood, function(bag, chicken){
+      chicken.destroy(true);
+    }, this);
+
+    this.physics.add.overlap(this.bag, this.chicken, this.eatFood, undefined, this);
+
+    this.physics.add.collider(this.bag, this.ham, this.eatFood, function(bag, ham){
+      ham.destroy(true);
+    }, this);
+
+    this.physics.add.overlap(this.bag, this.ham, this.eatFood, undefined, this);
+
+    this.physics.add.collider(this.bag, this.bacon, this.eatFood, function(bag, bacon){
+      bacon.destroy(true);
+    }, this);
+
+    this.physics.add.overlap(this.bag, this.bacon, this.eatFood, undefined, this);
 
     /*
     
@@ -247,7 +255,7 @@ https://phaser.io/tutorials/coding-tips-003
 
   resetChicken(chicken){
     chicken.x = 0;
-    let randomY = Phaser.Math.Between(0, 1800);
+    let randomY = Phaser.Math.Between(800, 900);
     chicken.y = randomY;
   }
   moveHam(ham, speed){
@@ -259,7 +267,7 @@ https://phaser.io/tutorials/coding-tips-003
 
   resetHam(ham){
     ham.x = 0;
-    let randomY = Phaser.Math.Between(0, 1800);
+    let randomY = Phaser.Math.Between(800, 900);
     ham.y = randomY;
   }
   moveBacon(bacon, speed){
@@ -271,22 +279,20 @@ https://phaser.io/tutorials/coding-tips-003
 
   resetBacon(bacon){
     bacon.x = 0;
-    let randomY = Phaser.Math.Between(0, 1800);
+    let randomY = Phaser.Math.Between(800, 900);
     bacon.y = randomY;
   }
-  
 
-
-  deleteFood(bag, tomato){
-    bag.disableBody(true, true);
+  deleteFood(bag, food){
+    food.disableBody(true, true);
   }
 
 
-  eatFood(bag, tomato){
-    tomato.destroy(true); 
+  eatFood(bag, food){
+    food.destroy(true); 
     //this.beamSound.play();
-    this.score += 5;
-    this.scoreLabel.text = "SCORE " + this.score;
+    /* this.score += 5;
+    this.scoreLabel.text = "SCORE " + this.score; */
   }
 
   startDrag(pointer, targets){
@@ -316,11 +322,6 @@ https://phaser.io/tutorials/coding-tips-003
   }
 
   movePlayerManager(){
-    
-
-    //NOTE NOTE NOTE NOTE NOTE NOTE NOTE
-    //PLAYER IS STILL MOVING DOWNWARD AND WE GOTTA FIX THIS
-
     
     if(this.cursorKeys.left.isDown){
       this.player.setVelocityX(-300);
